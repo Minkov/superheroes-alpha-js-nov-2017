@@ -5,36 +5,22 @@ var Sequelize = require('sequelize');
 /**
  * Actions summary:
  *
- * createTable "Users", deps: []
+ * createTable "users_superheroes", deps: [Users, Superheros]
  *
  **/
 
 var info = {
-    "revision": 3,
+    "revision": 4,
     "name": "noname",
-    "created": "2018-03-19T11:58:41.742Z",
+    "created": "2018-03-19T14:34:28.609Z",
     "comment": ""
 };
 
 var migrationCommands = [{
     fn: "createTable",
     params: [
-        "Users",
+        "users_superheroes",
         {
-            "id": {
-                "type": Sequelize.INTEGER,
-                "autoIncrement": true,
-                "primaryKey": true,
-                "allowNull": false
-            },
-            "username": {
-                "type": Sequelize.STRING,
-                "allowNull": false,
-                "unique": true
-            },
-            "password": {
-                "type": Sequelize.STRING
-            },
             "createdAt": {
                 "type": Sequelize.DATE,
                 "allowNull": false
@@ -42,6 +28,26 @@ var migrationCommands = [{
             "updatedAt": {
                 "type": Sequelize.DATE,
                 "allowNull": false
+            },
+            "UserId": {
+                "type": Sequelize.INTEGER,
+                "onUpdate": "CASCADE",
+                "onDelete": "CASCADE",
+                "references": {
+                    "model": "Users",
+                    "key": "id"
+                },
+                "primaryKey": true
+            },
+            "SuperheroId": {
+                "type": Sequelize.INTEGER,
+                "onUpdate": "CASCADE",
+                "onDelete": "CASCADE",
+                "references": {
+                    "model": "Superheros",
+                    "key": "id"
+                },
+                "primaryKey": true
             }
         },
         {}

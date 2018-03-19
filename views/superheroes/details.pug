@@ -1,5 +1,8 @@
 extends ../_shared/master
 
+block head_scripts
+    script(src="/static/js/add-to-favorites.js")
+
 block content
     h1
         | #{superhero.name}
@@ -13,4 +16,9 @@ block content
         each power in superhero.powers
             li
                 =power.name
+    a#btn-add-to-favorites.btn(href="#", data-id=superhero.id)
+        if superhero.isFavorite
+            | Remove from favorites
+        else
+            | Add to favorites
 

@@ -37,6 +37,14 @@ const init = (app, data) => {
             const superhero = await controller.create(superheroModel);
             res.status(201)
                 .send(superhero);
+        })
+        .put('/:id', async (req, res) => {
+            const superheroId = +req.params.id;
+            const user = req.user;
+
+            const superhero =
+                await controller.updateFavoriteSuperhero(user, superheroId);
+            return res.send(superhero);
         });
 
     // decorator design pattern

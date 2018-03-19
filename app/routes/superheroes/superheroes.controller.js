@@ -8,10 +8,16 @@ class SuperheroesController {
         return superheroes;
     }
 
-    async getById(id) {
+    async getById(id, user) {
         const superhero = await this.data.superheroes.getById(id);
         superhero.alignment = await superhero.getAlignment();
         superhero.powers = await superhero.getPowers();
+        if (user) {
+            const userSuperheroes = await user.getSuperheros();
+            const superheroInUserIndex =
+                userSuperheroes.findIndex((hero) => hero.id === id);
+            superhero.isFavorite = superheroInUserIndex >= 0;
+        }
         return superhero;
     }
 
@@ -42,6 +48,22 @@ class SuperheroesController {
             alignments,
             powers,
         };
+    }
+    async updateFavoriteSuperhero(user, superheroId) {
+        const userSuperheroes = await user.getSuperheros();
+        const superheroInUserIndex =
+            userSuperheroes.findIndex(
+                (superhero) => superhero.id === superheroId);
+        if (superheroInUserIndex >= 0) {
+            userSuperheroes.splice(superheroInUserIndex, 1);
+        } else {
+            const superhero = await this.data.superheroes.getById(superheroId);
+            userSuperheroes.push(superhero);
+        }
+
+        await user.setSuperheros(userSuperheroes);
+
+        return this.data.superheroes.getById(superheroId);
     }
 }
 

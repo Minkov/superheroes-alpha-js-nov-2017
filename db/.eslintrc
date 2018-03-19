@@ -13,7 +13,7 @@
             "error",
             "always"
         ],
-        "func-style":"error",
+        "func-style": "error",
         "semi": 2,
         "no-undef": 2,
         "no-use-before-define": 0,

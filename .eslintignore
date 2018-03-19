@@ -1,2 +1,2 @@
-app/db/migrations
-app/db/models/index.js
+db/migrations
+db/models/index.js

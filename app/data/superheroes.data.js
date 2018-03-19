@@ -2,7 +2,7 @@ const Data = require('./generic.data');
 const {
     Superhero,
     Power,
-} = require('../db/models');
+} = require('../../db/models');
 
 class SuperheroesData extends Data {
     constructor() {

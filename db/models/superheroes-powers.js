@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
         },
     }, {});
+
     SuperheroesPowers.associate = (models) => {
         const {
             Superhero,

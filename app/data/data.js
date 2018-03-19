@@ -2,7 +2,7 @@ const {
     Alignment,
     Power,
     Faction,
-} = require('../db/models');
+} = require('../../db/models');
 
 const Data = require('./generic.data');
 const SuperheroesData = require('./superheroes.data');

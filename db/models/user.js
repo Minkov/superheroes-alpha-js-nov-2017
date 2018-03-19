@@ -10,5 +10,20 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
   }, {});
+
+  User.associate = (models) => {
+    const {
+      Superhero,
+    } = models;
+
+    User.belongsToMany(Superhero, {
+      through: 'users_superheroes',
+    });
+
+    Superhero.belongsToMany(User, {
+      through: 'users_superheroes',
+    });
+  };
+
   return User;
 };

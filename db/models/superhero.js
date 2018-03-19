@@ -28,10 +28,6 @@ module.exports = (sequelize, DataTypes) => {
       SuperheroesPowers,
     } = models;
 
-    /** wrong **/
-    // Superhero.hasOne(Alignment);
-    // Alignment.hasMany(Superhero);
-
     Superhero.belongsTo(Alignment, {
       foreignKey: {
         allowNull: false,

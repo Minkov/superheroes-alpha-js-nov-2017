@@ -32,7 +32,7 @@ const init = (app, data) => {
                 id,
             } = req.params;
 
-            const superhero = await controller.getById(+id);
+            const superhero = await controller.getById(+id, req.user);
 
             const model = {
                 superhero,
