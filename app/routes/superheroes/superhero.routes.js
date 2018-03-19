@@ -12,14 +12,15 @@ const init = (app, data) => {
 
     router
         .get('/', async (req, res) => {
-            console.log(' ' + '*'.repeat(50));
-            console.log(req.user);
-            console.log(' ' + '*'.repeat(50));
 
+            console.log(req.isAuthenticated());
+            
+            let context = {};
             const superheroes = await controller.getAll();
-            const context = {
+            context = {
                 superheroes,
             };
+
             res.render('superheroes/list', context);
         })
         .get('/create', async (req, res) => {

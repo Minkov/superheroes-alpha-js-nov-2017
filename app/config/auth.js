@@ -1,7 +1,10 @@
+const config = require('../config');
+
 const express = require('express');
 
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 const passport = require('passport');
 const {
@@ -21,13 +24,14 @@ const init = (app, data) => {
         return done(null, user);
     }));
 
+    // User to string
     passport.serializeUser((user, done) => {
-        console.log(' --- Cookie created ---');
         done(null, user.username);
     });
 
+    // string to User
     passport.deserializeUser(async (username, done) => {
-        const user = await data.findByUsername(username);
+        const user = await data.users.findByUsername(username);
 
         if (!user) {
             return done(new Error("invalid used"));
@@ -38,11 +42,14 @@ const init = (app, data) => {
 
     app.use(cookieParser());
     app.use(session({
-        secret: 'Purple Unicorn',
+        secret: config.secret,
+        store: new MongoStore({
+            url: 'mongodb://localhost/superheroes-session',
+        })
     }));
 
     app.use(passport.initialize());
-    app.use(session());
+    app.use(passport.session());
 };
 
 module.exports = {
