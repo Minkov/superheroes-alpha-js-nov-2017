@@ -12,6 +12,10 @@ const init = (app, data) => {
 
     router
         .get('/', async (req, res) => {
+            console.log(' ' + '*'.repeat(50));
+            console.log(req.user);
+            console.log(' ' + '*'.repeat(50));
+
             const superheroes = await controller.getAll();
             const context = {
                 superheroes,

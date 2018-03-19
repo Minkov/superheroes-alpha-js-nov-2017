@@ -72,7 +72,7 @@
                 "name": {
                     "unique": true,
                     "allowNull": false,
-                    "seqType": "Sequelize.STRING(3).BINARY"
+                    "seqType": "Sequelize.STRING(60)"
                 },
                 "createdAt": {
                     "allowNull": false,
@@ -107,7 +107,7 @@
                 "name": {
                     "unique": true,
                     "allowNull": false,
-                    "seqType": "Sequelize.STRING(3).BINARY"
+                    "seqType": "Sequelize.STRING(60)"
                 },
                 "createdAt": {
                     "allowNull": false,
@@ -132,7 +132,7 @@
                 "name": {
                     "unique": true,
                     "allowNull": false,
-                    "seqType": "Sequelize.STRING(3).BINARY"
+                    "seqType": "Sequelize.STRING(60)"
                 },
                 "secretIdentity": {
                     "unique": true,
@@ -206,5 +206,5 @@
             "indexes": []
         }
     },
-    "revision": 1
+    "revision": 2
 }
