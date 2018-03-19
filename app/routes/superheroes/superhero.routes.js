@@ -12,7 +12,6 @@ const init = (app, data) => {
 
     router
         .get('/', async (req, res) => {
-
             console.log(req.isAuthenticated());
 
             let context = {};

@@ -11,7 +11,7 @@ class UsersData extends Data {
         return this.Model.findOne({
             where: {
                 username,
-            }
+            },
         });
     }
 }

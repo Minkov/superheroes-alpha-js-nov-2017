@@ -10,4 +10,13 @@ mixin nav()
             li
                 a(href="/superheroes/create")
                     | Create
+            if user
+                =user.username
+                a(href="/logout")
+                    | Log out
+            else
+                a(href="/login")
+                    | Log in
+                a(href="/register")
+                    | Register
     

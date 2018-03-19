@@ -9,8 +9,22 @@ const init = (app, data) => {
         passport.authenticate('local', {
             successRedirect: '/',
             failureRedirect: '/login',
-            failureFlash: false
+            failureFlash: false,
         }));
+
+    app.get('/logout', (req, res) => {
+        req.logout();
+        res.redirect('/');
+    });
+
+    app.get('/register', (req, res) => {
+        res.render('auth/register');
+    });
+
+    app.post('/register', (req, res) => {
+        data.users.create(req.body);
+        return res.redirect('/login');
+    });
 };
 
 module.exports = {

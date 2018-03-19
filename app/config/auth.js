@@ -1,7 +1,5 @@
 const config = require('../config');
 
-const express = require('express');
-
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -20,6 +18,7 @@ const init = (app, data) => {
                 message: 'Incorrect username or password.',
             });
         }
+
         // User with such username and password exists
         return done(null, user);
     }));
