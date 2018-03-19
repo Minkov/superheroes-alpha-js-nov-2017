@@ -1,0 +1,16 @@
+extends ../_shared/master
+
+block content
+    h1
+        | #{superhero.name}
+    p
+        =superhero.secretIdentity
+    p
+        =superhero.story
+    p
+        =superhero.alignment.name
+    ul
+        each power in superhero.powers
+            li
+                =power.name
+
