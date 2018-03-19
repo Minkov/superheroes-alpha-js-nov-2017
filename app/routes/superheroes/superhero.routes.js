@@ -14,7 +14,7 @@ const init = (app, data) => {
         .get('/', async (req, res) => {
 
             console.log(req.isAuthenticated());
-            
+
             let context = {};
             const superheroes = await controller.getAll();
             context = {

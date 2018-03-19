@@ -34,7 +34,7 @@ const init = (app, data) => {
         const user = await data.users.findByUsername(username);
 
         if (!user) {
-            return done(new Error("invalid used"));
+            return done(new Error('invalid used'));
         }
 
         return done(null, user);
@@ -44,8 +44,8 @@ const init = (app, data) => {
     app.use(session({
         secret: config.secret,
         store: new MongoStore({
-            url: 'mongodb://localhost/superheroes-session',
-        })
+            url: config.mongoDbConnectionString,
+        }),
     }));
 
     app.use(passport.initialize());
